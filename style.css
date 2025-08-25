@@ -411,6 +411,15 @@ body {
   outline: 3px solid var(--neon-cyan);
   outline-offset: 3px;
 }
+#dynamic-subheading::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* Dazzling Text Animation */
 /* Replace your existing .dazzling-text and @keyframes dazzle rules with this */

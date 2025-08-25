@@ -1,4 +1,4 @@
-// script.js - Final and corrected version
+// script.js - Complete and corrected version
 
 class PortfolioApp {
   constructor() {
@@ -24,38 +24,83 @@ class PortfolioApp {
     this.initContactForm();
     this.initDropdown();
     this.handleAccessibility();
-    this.initHeroAnimation(); // This will now work correctly
+    this.initHeroAnimation();
   }
 
-// Replace your existing initHeroAnimation method with this one
-
- initHeroAnimation() {
+  initHeroAnimation() {
+    // --- 1. Main Heading Typewriter Effect ---
     const heading = document.querySelector('.glitch-heading');
-    if (!heading) return;
+    if (heading) {
+      const originalText = heading.textContent;
+      let interval = null;
 
-    // Use textContent to get the original text, including spaces
-    const originalText = heading.textContent;
-    let interval = null;
+      const runTypewriterEffect = () => {
+        let index = 0;
+        heading.textContent = "";
+        clearInterval(interval);
 
-    const runTypewriterEffect = () => {
-      let index = 0;
-      // Use textContent to clear the heading
-      heading.textContent = "";
-      clearInterval(interval);
+        interval = setInterval(() => {
+          if (index < originalText.length) {
+            heading.textContent += originalText[index];
+            index++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 100);
+      };
+      runTypewriterEffect();
+    }
 
-      interval = setInterval(() => {
-        if (index < originalText.length) {
-          // Use textContent to add the next letter
-          heading.textContent += originalText[index];
-          index++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 100);
-    };
+    // --- 2. Dynamic Subheading with Glitch Cycle Effect ---
+    const subheading = document.getElementById('dynamic-subheading');
+    if (subheading) {
+      const texts = [
+        "Frontend Developer",
+        "Problem Solver",
+        "AI/ML Enthusiast",
+        "Creative Coder",
+        "Full-Stack Aspirant",
+        "Tech Innovator"
+      ];
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
+      let textIndex = 0;
+      let interval = null;
 
-    // Run the animation only once on page load
-    runTypewriterEffect();
+      const glitchToNextText = () => {
+        // Move to the next text in the array
+        textIndex = (textIndex + 1) % texts.length;
+        const nextText = texts[textIndex];
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+          subheading.textContent = nextText
+            .split("")
+            .map((letter, index) => {
+              // Reveal letters one by one
+              if (index < iteration) {
+                return nextText[index];
+              }
+              // Scramble the rest
+              return letters[Math.floor(Math.random() * letters.length)];
+            })
+            .join("");
+
+          // When the new text is fully revealed
+          if (iteration >= nextText.length) {
+            clearInterval(interval);
+            // Wait for 3 seconds, then start the next glitch
+            setTimeout(glitchToNextText, 3000);
+          }
+
+          iteration += 1 / 3;
+        }, 50); // Speed of the glitch effect
+      };
+
+      // Start the first cycle
+      glitchToNextText();
+    }
   }
 
   debounce(func, wait) {
