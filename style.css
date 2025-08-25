@@ -41,7 +41,7 @@
 /* Import Custom Fonts with Fallbacks */
 @font-face {
   font-family: 'Staravenue';
-  src: url('../assets/fonts/Staravenue.ttf') format('truetype');
+  src: url('./assets/fonts/staravenue.ttf') format('truetype');
   font-display: swap;
 }
 
