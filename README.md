@@ -8,7 +8,7 @@ A responsive and animated personal portfolio website built with HTML, CSS, and J
 
 ### **Live Demo**
 
-🚀 **[View the live site here!](https://your-username.github.io/your-repository-name/)**
+🚀 **[View the live site here!](https://nandasatayu.github.io/Satayu-s-Portfolio/)**
 
 ---
 
