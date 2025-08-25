@@ -1,6 +1,6 @@
 # Satayu Nanda - Developer Portfolio
 
-![Portfolio Screenshot](httpss://placehold.co/800x400/121212/00ffff?text=Your+Portfolio+Screenshot)
+![Portfolio Screenshot](./assets/images/image.png)
 
 A responsive and animated personal portfolio website built with HTML, CSS, and JavaScript. The project showcases my skills, experience, and projects in a visually engaging, retro-futuristic synthwave theme.
 
