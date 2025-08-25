@@ -1101,11 +1101,11 @@ body {
   }
 
   .hero-content h1 {
-    font-size: clamp(1.8rem, 7vw, 3.5rem);
+    font-size: clamp(2.5rem, 12vw, 5rem);
   }
 
   .hero-content p {
-    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    font-size: clamp(1.2rem, 6vw, 1.8rem);
   }
 
   .hero-button {
@@ -1179,11 +1179,11 @@ body {
 
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-size: clamp(2.2rem, 10vw, 4rem);
   }
 
   .hero-content p {
-    font-size: clamp(0.8rem, 3.5vw, 1rem);
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
   }
 
   .hero-button {
