@@ -6,7 +6,7 @@
 :root {
   /* Colors */
   --primary-gradient: linear-gradient(90deg, #ff00cc, #00ffff);
-  --secondary-gradient: linear-gradient(135deg, #9333ea, #ec4899, #ef4444);
+  --secondary-gradient: linear-gradient(90deg, #8E2DE2, #FF0080, #FF073A, #FF5F1F);
   --neon-pink: #ff00cc;
   --neon-cyan: #00ffff;
   --neon-purple: #9333ea;
@@ -30,7 +30,7 @@
   
   /* Typography */
   --font-primary: 'VCR OSD Mono', 'Courier New', monospace;
-  --font-display: 'Streamster', 'Arial', sans-serif;
+  --font-display: 'Staravenue', 'Arial', sans-serif;
   --font-fallback: 'Arial', sans-serif;
   
   /* Spacing */
@@ -40,8 +40,8 @@
 
 /* Import Custom Fonts with Fallbacks */
 @font-face {
-  font-family: 'Streamster';
-  src: url('./assets/fonts/Streamster.ttf') format('truetype');
+  font-family: 'Staravenue';
+  src: url('../assets/fonts/Staravenue.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -413,13 +413,38 @@ body {
 }
 
 /* Dazzling Text Animation */
+/* Replace your existing .dazzling-text and @keyframes dazzle rules with this */
+
 .dazzling-text {
+  /* --- 1. Thin White Border --- */
+  /* This adds the outline to the text */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
+
+  /* Gradient fill styles */
   background: var(--secondary-gradient);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: dazzle 3s linear infinite;
+  
+  /* Slower animation by default */
+  animation: dazzle 4s linear infinite;
+  
+  /* Smooth transition for hover effects */
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- 2. Hover Effects --- */
+.dazzling-text:hover {
+  /* Replace the old text-shadow with this new multi-layered one */
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.6),  /* Innermost white glow */
+    0 0 10px #FF0080,                  /* Hot pink glow */
+    0 0 15px #8E2DE2;                  /* Purple glow */
+  
+  /* The rest of the rule stays the same */
+  animation-duration: 1s;
+  cursor: pointer;
 }
 
 @keyframes dazzle {

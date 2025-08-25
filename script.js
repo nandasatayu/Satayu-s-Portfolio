@@ -1,4 +1,4 @@
-// script.js - Updated and complete code
+// script.js - Final and corrected version
 
 class PortfolioApp {
   constructor() {
@@ -24,6 +24,38 @@ class PortfolioApp {
     this.initContactForm();
     this.initDropdown();
     this.handleAccessibility();
+    this.initHeroAnimation(); // This will now work correctly
+  }
+
+// Replace your existing initHeroAnimation method with this one
+
+ initHeroAnimation() {
+    const heading = document.querySelector('.glitch-heading');
+    if (!heading) return;
+
+    // Use textContent to get the original text, including spaces
+    const originalText = heading.textContent;
+    let interval = null;
+
+    const runTypewriterEffect = () => {
+      let index = 0;
+      // Use textContent to clear the heading
+      heading.textContent = "";
+      clearInterval(interval);
+
+      interval = setInterval(() => {
+        if (index < originalText.length) {
+          // Use textContent to add the next letter
+          heading.textContent += originalText[index];
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+    };
+
+    // Run the animation only once on page load
+    runTypewriterEffect();
   }
 
   debounce(func, wait) {
@@ -85,7 +117,6 @@ class PortfolioApp {
     }
   }
 
-  // --- NEW, RELIABLE ANIMATION LOGIC ---
   initAnimations() {
     const elementsToAnimate = document.querySelectorAll(`
       .section-heading,
@@ -96,7 +127,6 @@ class PortfolioApp {
       .about-content
     `);
 
-    // Don't animate if the user prefers reduced motion
     if (this.prefersReducedMotion) {
       elementsToAnimate.forEach(el => el.style.opacity = '1');
       return;
@@ -110,19 +140,14 @@ class PortfolioApp {
         }
       });
     }, {
-      threshold: 0.1 // Animate when 10% of the element is visible
+      threshold: 0.1
     });
 
     elementsToAnimate.forEach((element, index) => {
-      // Add the initial CSS class that hides the element
       element.classList.add('fade-up');
-      
-      // Add a staggered delay for the timeline cards for a nice effect
       if (element.classList.contains('timeline-card')) {
         element.style.transitionDelay = `${index * 0.1}s`;
       }
-      
-      // Start observing the element
       observer.observe(element);
     });
 
