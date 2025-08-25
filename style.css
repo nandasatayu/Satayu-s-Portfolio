@@ -1079,13 +1079,15 @@ body {
     max-width: 90%;
   }
 
+  @media (max-width: 1024px) {
+  /* ... other styles ... */
   .timeline-card.left,
   .timeline-card.right {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
     text-align: left;
     max-width: 95%;
   }
+  /* ... other styles ... */
+}
 
   .timeline-card::after {
     display: none;
