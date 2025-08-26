@@ -16,6 +16,7 @@ class PortfolioApp {
   }
 
   setupApp() {
+    this.initLoader();
     this.initializeComponents();
     this.setupEventListeners();
     this.initSmoothScrolling();
@@ -25,6 +26,17 @@ class PortfolioApp {
     this.initDropdown();
     this.handleAccessibility();
     this.initHeroAnimation();
+  }
+   initLoader() {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+
+    window.onload = () => {
+      // Wait for 3.5 seconds before hiding the loader
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 1500); // 3500 milliseconds = 3.5 seconds
+    };
   }
 
   initHeroAnimation() {
@@ -228,6 +240,7 @@ class PortfolioApp {
           throw new Error('EmailJS not loaded');
         }
       }
+      // IMPORTANT: Double-check that this Public Key is correct in your EmailJS account.
       emailjs.init("FTBswrm1hgbRpx2Zs");
       return true;
     } catch (error) {
@@ -261,7 +274,8 @@ class PortfolioApp {
       submitButton.textContent = 'Sending...';
       submitButton.disabled = true;
 
-      await emailjs.sendForm("service_g7nkihk", "template_oavmazg2", this.contactForm);
+      // --- CORRECTED IDS ARE HERE ---
+      await emailjs.sendForm("service_g7nkihk", "template_oavmzg2", this.contactForm);
       
       this.showFormMessage('✅ Message sent successfully!', 'success');
       this.contactForm.reset();

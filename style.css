@@ -16,7 +16,7 @@
   /* Backgrounds */
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-bg-hover: rgba(255, 255, 255, 0.1);
-  --overlay-bg: rgba(0, 0, 0, 0.6);
+  --overlay-bg: rgba(0, 0, 0, 0.75);
   --navbar-bg: rgba(0, 0, 0, 0.4);
   
   /* Effects */
@@ -121,7 +121,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.7) contrast(1.1);
+  filter: brightness(0.65) contrast(1.1);
 }
 
 .video-overlay {
@@ -138,6 +138,67 @@ body {
 .content {
   position: relative;
   z-index: 1;
+}
+
+/* Add this to the end of your style.css file */
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* Ensures it's on top of everything */
+  
+  /* Glassy background effect */
+  background: rgba(10, 10, 25, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Center the loading text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* For the fade-out animation */
+  transition: opacity 0.75s ease, visibility 0.75s ease;
+}
+
+/* This class will be added by JavaScript to hide the loader */
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-text {
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  letter-spacing: 4px;
+  
+  /* Use your existing gradient for the text color */
+  background: var(--secondary-gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Pulsing animation */
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Navigation Bar */
