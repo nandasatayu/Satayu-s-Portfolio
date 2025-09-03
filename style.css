@@ -905,6 +905,7 @@ body {
   font-family: var(--font-fallback);
 }
 
+/* Find this rule */
 .kaggle-logo {
   width: 50px;
   height: auto;
@@ -913,8 +914,18 @@ body {
   padding: 0.25rem;
 }
 
+/* And add this new rule right below it for the GitHub logo */
+.github-logo {
+  width: 40px; /* A bit smaller to fit the square icon shape better */
+  height: 40px;
+  transition: var(--transition-bounce);
+}
+
+/* Also, update the hover effect to target both logos */
 .kaggle-logo:hover,
-.kaggle-logo:focus {
+.kaggle-logo:focus,
+.github-logo:hover,
+.github-logo:focus {
   transform: scale(1.1);
   filter: drop-shadow(0 0 10px var(--neon-cyan));
   outline: 2px solid var(--neon-cyan);
